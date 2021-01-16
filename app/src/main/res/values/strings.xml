@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">AnchorBooksKVH</string>
+    <string name="book_front">Book Front</string>
+    <string name="don_quijote_de_la_mancha">Don Quijote de la Mancha</string>
+    <string name="miguel_de_cervantes">Miguel de Cervantes</string>
+    <string name="book_image">Book Image</string>
+    <string name="by">by</string>
+    <string name="_20000">20000</string>
+    <string name="_15000">15000</string>
+    <string name="a_o">Año:</string>
+    <string name="_1998">1998</string>
+    <string name="pais">Pais:</string>
+    <string name="antes_20_000">Antes: $20.000</string>
+    <string name="ahora_15_000">Ahora: $15.000</string>
+    <string name="contactar_con_ventas">Contactar con Ventas</string>
+    <string name="chile">Chile</string>
+    <string name="paginas">Paginas:</string>
+    <string name="idioma">Idioma:</string>
+    <string name="saber_m_s">Saber Más</string>
+</resources>

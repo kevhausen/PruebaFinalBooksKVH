@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/detail_book_image"
+                app:cardElevation="20dp"
+                app:cardPreventCornerOverlap="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/detail_img_image"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    android:padding="4dp"
+                    android:layout_margin="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:srcCompat="@tools:sample/avatars"
+                    android:contentDescription="@string/book_image" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/detail_txt_book_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                app:layout_constraintStart_toEndOf="@id/detail_book_image"
+                android:text="@string/don_quijote_de_la_mancha"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/detail_static_by"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="@string/by"
+                app:layout_constraintStart_toStartOf="@id/detail_txt_book_name"
+                app:layout_constraintTop_toBottomOf="@id/detail_txt_book_name"/>
+
+
+            <TextView
+                android:id="@+id/detail_txt_book_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:text="@string/miguel_de_cervantes"
+                app:layout_constraintStart_toEndOf="@id/detail_static_by"
+                app:layout_constraintTop_toTopOf="@id/detail_static_by"
+                app:layout_constraintBottom_toBottomOf="@id/detail_static_by"/>
+
+            <TextView
+                android:id="@+id/detail_txt_last_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/antes_20_000"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                app:layout_constraintStart_toStartOf="@id/detail_txt_price"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@id/detail_txt_price"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_txt_price"
+                android:text="@string/ahora_15_000"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/detail_book_image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_static_by"
+                android:padding="4dp"/>
+
+            <Button
+                android:id="@+id/detail_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contactar_con_ventas"
+                app:layout_constraintStart_toEndOf="@id/detail_book_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_txt_price"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/detail_static_year"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:text="@string/a_o"
+        android:layout_below="@id/cardview"
+        android:padding="15dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_txt_year"
+        android:layout_toEndOf="@id/detail_static_year"
+        android:text="@string/_1998"
+        android:layout_below="@id/cardview"
+        android:padding="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:id="@+id/detail_static_country"
+        android:text="@string/pais"
+        android:layout_below="@id/detail_static_year"
+        android:padding="15dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_txt_country"
+        android:layout_toEndOf="@id/detail_static_country"
+        android:layout_below="@id/detail_static_year"
+        android:text="@string/chile"
+        android:padding="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:id="@+id/detail_static_pages"
+        android:text="@string/paginas"
+        android:layout_below="@id/detail_static_country"
+        android:padding="15dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_txt_pages"
+        android:layout_toEndOf="@id/detail_static_pages"
+        android:layout_below="@id/detail_static_country"
+        android:text="@string/chile"
+        android:padding="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:id="@+id/detail_static_language"
+        android:text="@string/idioma"
+        android:layout_below="@id/detail_static_pages"
+        android:padding="15dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_txt_language"
+        android:layout_toEndOf="@id/detail_static_language"
+        android:layout_below="@id/detail_static_pages"
+        android:text="@string/chile"
+        android:padding="15dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/saber_m_s"
+        android:layout_below="@id/detail_static_language"
+        android:layout_centerHorizontal="true"
+        android:padding="15dp"/>
+
+
+
+</RelativeLayout>
