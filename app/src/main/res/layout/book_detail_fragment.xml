@@ -6,6 +6,29 @@
     android:background="@color/green_200"
     android:layout_height="match_parent"
     android:padding="15dp">
+    <TextView
+        android:id="@+id/text_retry_connection"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/no_es_posible_obtener_los_datos_de_internet"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:id="@+id/button_retry_connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/gray"
+        android:text="@string/reintentar"
+        android:layout_below="@id/text_retry_connection"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        />
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
@@ -98,6 +121,7 @@
 
             <ImageView
                 android:id="@+id/delivery"
+                android:contentDescription="@string/button_retry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -174,7 +198,7 @@
         android:layout_marginStart="17dp"
         android:layout_toEndOf="@id/detail_static_country"
         android:padding="15dp"
-        android:text="@string/chile"
+
         android:textAlignment="center"
         android:textSize="20sp" />
 
@@ -195,7 +219,6 @@
         android:layout_below="@id/detail_static_country"
         android:layout_centerHorizontal="true"
         android:padding="15dp"
-        android:text="@string/chile"
         android:textSize="20sp" />
 
     <TextView
@@ -227,7 +250,8 @@
         android:layout_marginTop="50dp"
         android:drawableLeft="@drawable/ic_wikipedia_logo"
         android:padding="15dp"
-        android:text="@string/saber_m_s" />
+        android:text="@string/saber_m_s"
+        tools:ignore="RtlHardcoded" />
 
 
 </RelativeLayout>

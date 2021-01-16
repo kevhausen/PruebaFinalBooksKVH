@@ -18,4 +18,7 @@
     <string name="idioma">Idioma:</string>
     <string name="saber_m_s">Saber Más</string>
     <string name="sin_delivery">Sin Delivery</string>
+    <string name="no_es_posible_obtener_los_datos_de_internet">No es posible obtener los datos de internet.</string>
+    <string name="reintentar">Reintentar</string>
+    <string name="button_retry">button retry</string>
 </resources>

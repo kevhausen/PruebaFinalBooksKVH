@@ -9,7 +9,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.anchorbookskvh.R
 import com.example.anchorbookskvh.databinding.BookListFragmentBinding
+import com.example.anchorbookskvh.model.isOnline
 import com.example.anchorbookskvh.viewmodel.BookVM
+import com.google.android.material.snackbar.Snackbar
 
 class BookListFragment : Fragment(), ListAdapter.IListAdapter {
 
@@ -24,7 +26,8 @@ class BookListFragment : Fragment(), ListAdapter.IListAdapter {
         savedInstanceState: Bundle?
     ): View {
         binding = BookListFragmentBinding.inflate(layoutInflater)
-        vm.setBooksWebIntoDB()
+        checkConnectivity()
+
         mAdapter = ListAdapter(this)
 
         vm.getBookList().observe(viewLifecycleOwner, {
@@ -45,6 +48,38 @@ class BookListFragment : Fragment(), ListAdapter.IListAdapter {
 
 
         return binding.root
+    }
+
+    fun checkConnectivity(){
+        if(!isOnline(requireContext())){
+            vm.getBookList().observe(viewLifecycleOwner, {
+                if(it.isNotEmpty()){
+                    showFailWidget(false)
+                }else{
+                    showFailWidget(true)
+                    binding.buttonRetryConnection.setOnClickListener {
+                        if(isOnline(requireContext())){
+                            showFailWidget(false)
+                            vm.setBooksWebIntoDB()
+                        } else{
+                            Snackbar.make(requireActivity().findViewById(android.R.id.content),"No hay internet",Snackbar.LENGTH_LONG).show()
+                        }
+                    }
+                }
+            })
+
+        } else{
+            vm.setBooksWebIntoDB()
+        }
+    }
+    private fun showFailWidget(show :Boolean){
+        if(show){
+            binding.textRetryConnection.visibility=View.VISIBLE
+            binding.buttonRetryConnection.visibility=View.VISIBLE
+        } else{
+            binding.textRetryConnection.visibility=View.GONE
+            binding.buttonRetryConnection.visibility=View.GONE
+        }
     }
 
     override fun idFromBook(id: Int) {
