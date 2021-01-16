@@ -11,33 +11,33 @@ import okhttp3.ResponseBody
 
 class BookRepo {
 
-    private val retrofit=RetrofitBook.retrofitInstance()
-    private val dao=BookApplication.bookDB!!.bookDao()
+    private val retrofit = RetrofitBook.retrofitInstance()
+    private val dao = BookApplication.bookDB!!.bookDao()
 
     //se guarda aca el mensaje de error para luego llamarlo en la vista
-    var errorMessage=MutableLiveData<ResponseBody>()
+    var errorMessage = MutableLiveData<ResponseBody>()
 
-    suspend fun setBooksWebIntoDB(){
+    suspend fun setBooksWebIntoDB() {
         val response = retrofit.retrieveBooks()
-        when(response.isSuccessful){
-            true-> response.body()?.let { dao.insertBooks(it) }
-            false->errorMessage.value=response.errorBody()
+        when (response.isSuccessful) {
+            true -> response.body()?.let { dao.insertBooks(it) }
+            false -> errorMessage.value = response.errorBody()
         }
     }
 
-    suspend fun setBookDetailIntoDB(id:Int){
-        val response=retrofit.retrieveBookDetail(id)
-        when(response.isSuccessful){
-            true-> response.body()?.let { dao.insertBookDetail(it) }
-            false-> errorMessage.value=response.errorBody()
+    suspend fun setBookDetailIntoDB(id: Int) {
+        val response = retrofit.retrieveBookDetail(id)
+        when (response.isSuccessful) {
+            true -> response.body()?.let { dao.insertBookDetail(it) }
+            false -> errorMessage.value = response.errorBody()
         }
     }
 
-    fun getBookList():LiveData<List<Book>>{
+    fun getBookList(): LiveData<List<Book>> {
         return dao.getBookList()
     }
 
-    fun getBookDetail(id:Int):LiveData<BookDetail>{
+    fun getBookDetail(id: Int): LiveData<BookDetail> {
         return dao.getBoomDetailById(id)
     }
 }

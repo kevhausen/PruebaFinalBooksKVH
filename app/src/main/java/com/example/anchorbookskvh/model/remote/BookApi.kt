@@ -9,8 +9,8 @@ import retrofit2.http.Path
 interface BookApi {
 
     @GET("books")
-    suspend fun retrieveBooks():Response<List<Book>>
+    suspend fun retrieveBooks(): Response<List<Book>>
 
     @GET("bookDetail/{id}")
-    suspend fun retrieveBookDetail(@Path("id")id:Int): Response<BookDetail>
+    suspend fun retrieveBookDetail(@Path("id") id: Int): Response<BookDetail>
 }

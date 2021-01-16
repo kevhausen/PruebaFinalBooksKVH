@@ -9,14 +9,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.anchorbookskvh.R
 import com.example.anchorbookskvh.databinding.BookListFragmentBinding
-import com.example.anchorbookskvh.model.dataclass.Book
 import com.example.anchorbookskvh.viewmodel.BookVM
 
-class BookListFragment:Fragment(),ListAdapter.IListAdapter {
+class BookListFragment : Fragment(), ListAdapter.IListAdapter {
 
-    private lateinit var binding:BookListFragmentBinding
+    private lateinit var binding: BookListFragmentBinding
     private lateinit var mAdapter: ListAdapter
-    private val vm:BookVM by activityViewModels()
+    private val vm: BookVM by activityViewModels()
 
 
     override fun onCreateView(
@@ -24,17 +23,19 @@ class BookListFragment:Fragment(),ListAdapter.IListAdapter {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding= BookListFragmentBinding.inflate(layoutInflater)
-        mAdapter= ListAdapter(this)
+        binding = BookListFragmentBinding.inflate(layoutInflater)
+        vm.setBooksWebIntoDB()
+        mAdapter = ListAdapter(this)
 
-        vm.getBookList().observe(viewLifecycleOwner,{
+        vm.getBookList().observe(viewLifecycleOwner, {
             mAdapter.updateList(it)
         })
 
         binding.recyclerBookList.apply {
             //setear grid layout y adapter, tengo que hacer adapter
-            layoutManager=GridLayoutManager(activity,3)
-            adapter=mAdapter
+            layoutManager = GridLayoutManager(activity, 3)
+
+            adapter = mAdapter
 
         }
 
@@ -47,6 +48,8 @@ class BookListFragment:Fragment(),ListAdapter.IListAdapter {
     }
 
     override fun idFromBook(id: Int) {
-        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.frame_main,BookDetailFragment.newInstance(id))?.addToBackStack("details")?.commit()
+        activity?.supportFragmentManager?.beginTransaction()
+            ?.replace(R.id.frame_main, BookDetailFragment.newInstance(id))
+            ?.addToBackStack("details")?.commit()
     }
 }

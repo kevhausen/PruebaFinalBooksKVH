@@ -9,34 +9,32 @@ import com.example.anchorbookskvh.model.repository.BookRepo
 import kotlinx.coroutines.launch
 import okhttp3.ResponseBody
 
-class BookVM  : ViewModel(){
+class BookVM : ViewModel() {
 
-    private val repository=BookRepo()
+    private val repository = BookRepo()
 
-    init {
-        setBooksWebIntoDB()
-    }
-    fun setBooksWebIntoDB(){
+
+    fun setBooksWebIntoDB() {
         viewModelScope.launch {
             repository.setBooksWebIntoDB()
         }
     }
 
-    fun setBookDetailIntoDB(id:Int){
+    fun setBookDetailIntoDB(id: Int) {
         viewModelScope.launch {
             repository.setBookDetailIntoDB(id)
         }
     }
 
-    fun getBookList():LiveData<List<Book>>{
+    fun getBookList(): LiveData<List<Book>> {
         return repository.getBookList()
     }
 
-    fun getBookDetail(id:Int):LiveData<BookDetail>{
+    fun getBookDetail(id: Int): LiveData<BookDetail> {
         return repository.getBookDetail(id)
     }
 
-    fun getErrorMessage():LiveData<ResponseBody>{
+    fun getErrorMessage(): LiveData<ResponseBody> {
         return repository.errorMessage
     }
 
